@@ -1,0 +1,17 @@
+uuid: edd9d088-5038-4ab6-99ab-9cad53dc0397
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Group
+type: group
+description: 'Use <em>groups</em> to create new groups into site.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

@@ -1,0 +1,21 @@
+uuid: 701fab3a-aa5b-431d-83ee-eff03d46dc99
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.group.field_featured_image
+    - field.field.node.group.field_group_description
+    - node.type.group
+  module:
+    - user
+id: node.group.teaser
+targetEntityType: node
+bundle: group
+mode: teaser
+content: {  }
+hidden:
+  field_featured_image: true
+  field_group_description: true
+  links: true
+  search_api_excerpt: true
