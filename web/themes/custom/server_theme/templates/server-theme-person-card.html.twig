@@ -1,0 +1,41 @@
+<div class="max-w-sm rounded-lg border border-slate-200 max-w-xs" style="max-width:320px;">
+  <div class="px-6 py-4 text-center">
+    {% if image %}
+      <img class="object-cover rounded-full mx-auto inline-block" src="{{ image }}" alt="{{ image_alt }}">
+    {% endif %}
+    <div class="px-6 py-4 mb-3">
+      {% if person %}
+        <p class="mb-2 text-grey text-grey-600">{{ person }}</p>
+      {% endif %}
+      {% if title %}
+        <p class="mb-2 text-grey text-grey-400">{{ title }}</p>
+      {% endif %}
+      {% if role %}
+        <p class="text-sm rounded-full py-1 px-2 font-semibold bg-green-200 text-green-700 inline-block" style="color:#6bac95;background-color:#d1fae5;display:inline-block;padding:2px 8px;">{{ role }}</p>
+      {% endif %}
+    </div>
+  </div>
+  {% if email and contact %}
+    <div class="border-t border-slate-200 pb-2">
+      <div class="grid grid-cols-2 gap-0" style="display:flex;flex-wrap:nowrap;">
+        {% if email %}
+          <div class="border-r border-slate-200 px-6 py-2" style="width:50%">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2 inline" viewBox="0 0 20 20" fill="#9ca3af" style="width:24px;display:inline-block;">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+            <p class="px-2 text-grey text-grey-600 inline" style="display:inline-block;vertical-align:middle;"><a href="mailto:{{ email }}">Email</a></p>
+          </div>
+        {% endif %}
+        {% if contact %}
+          <div class="px-6 py-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2 inline" viewBox="0 0 20 20" fill="#9ca3af" style="width:24px;display:inline-block;">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            </svg>
+            <p class="px-2 text-grey text-grey-600 inline" style="display:inline-block;vertical-align:middle;"><a href="tel:{{ contact }}">Call</a></p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>
