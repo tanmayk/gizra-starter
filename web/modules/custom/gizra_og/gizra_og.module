@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Gizra OG customizations.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Url;
+use Drupal\og\OgAccessInterface;
+use Drupal\og\OgMembershipInterface;
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function gizra_og_entity_view_alter(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display) {
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'group' && $build['#view_mode'] == 'full') {
+    // Current user.
+    $account = \Drupal::currentUser();
+    // Make sure user is registered.
+    if ($account->isAuthenticated()) {
+      // Check if user is subscribed to the group.
+      $props = [
+        'uid' => $account->id(),
+        'entity_type' => $entity->getEntityTypeId(),
+        'entity_bundle' => $entity->bundle(),
+        'entity_id' => $entity->id(),
+      ];
+      $memberships = \Drupal::entityTypeManager()->getStorage('og_membership')->loadByProperties($props);
+      $membership = reset($memberships);
+      if (!$membership) {
+        // No membership found.
+        $og_access = \Drupal::service('og.access');
+        // Check if user has access to subscribe.
+        if (($access = $og_access->userAccess($entity, 'subscribe', $account)) && $access->isAllowed()) {
+          // Generate subscription url.
+          $parameters = [
+            'entity_type_id' => $entity->getEntityTypeId(),
+            'group' => $entity->id(),
+            'og_membership_type' => OgMembershipInterface::TYPE_DEFAULT,
+          ];
+          $url = Url::fromRoute('og.subscribe', $parameters);
+          // Let's show the message. We can even add html section if needed.
+          \Drupal::messenger()->addStatus(t('Hi @name, click <a href="@sub_link">here</a> if you would like to subscribe to this group called @group.', [
+            '@name' => $account->getAccountName(),
+            '@sub_link' => $url->toString(),
+            '@group' => $entity->getTitle(),
+          ]));
+        }
+      }
+    }
+  }
+}

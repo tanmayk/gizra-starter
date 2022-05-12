@@ -1,0 +1,12 @@
+uuid: 16d88f46-b061-447e-a7ce-ea8d9a906e29
+langcode: en
+status: true
+dependencies:
+  module:
+    - og
+id: og_membership_remove_single_role_action.administrator
+label: 'Remove the administrator role from the selected members'
+type: og_membership
+plugin: og_membership_remove_single_role_action
+configuration:
+  role_name: administrator
