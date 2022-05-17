@@ -1,0 +1,42 @@
+uuid: 6ea2ee0b-3e93-4c51-8625-37d35736cbe7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.group.field_featured_image
+    - field.field.node.group.field_group_description
+    - node.type.group
+  module:
+    - gizra_og
+    - user
+id: node.group.default
+targetEntityType: node
+bundle: group
+mode: default
+content:
+  field_featured_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_group_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  og_group:
+    type: gizra_og_greeting
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  links: true
+  search_api_excerpt: true
