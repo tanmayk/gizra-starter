@@ -3,3 +3,5 @@ type: module
 description: "OG customizations."
 core_version_requirement: ^8 || ^9
 package: "gizra"
+dependencies:
+  - og

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.group.field_group_description
     - node.type.group
   module:
+    - gizra_og
     - user
 id: node.group.default
 targetEntityType: node
@@ -29,7 +30,13 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  og_group:
+    type: gizra_og_greeting
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
 hidden:
   links: true
-  og_group: true
   search_api_excerpt: true

@@ -13,7 +13,14 @@ id: node.group.teaser
 targetEntityType: node
 bundle: group
 mode: teaser
-content: {  }
+content:
+  og_group:
+    type: og_group_subscribe
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   field_featured_image: true
   field_group_description: true
