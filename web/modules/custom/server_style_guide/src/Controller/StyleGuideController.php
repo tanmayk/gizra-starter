@@ -189,6 +189,67 @@ class StyleGuideController extends ControllerBase {
     ];
     $build[] = $this->wrapElementWideContainer($element, 'Page Title');
 
+    // Person card.
+    $single_person_card = [
+      '#theme' => 'server_theme_person_card',
+      '#image' => $this->getPlaceholderPersonImage(100, 100),
+      '#image_alt' => 'Jane Cooper',
+      '#person' => 'Jane Cooper',
+      '#title' => 'Paradigm Representative',
+      '#role' => 'Admin',
+      '#email' => 'jane@example.com',
+      '#contact' => '12345678',
+    ];
+    $build[] = $this->wrapElementWideContainer($single_person_card, 'Person Card');
+
+    // Person cards - 10.
+    $items = [];
+    $single_person_card_1 = $single_person_card;
+    $single_person_card_1['#person'] = 'Jon Adams';
+    $items[] = $single_person_card_1;
+
+    $single_person_card_2 = $single_person_card;
+    $single_person_card_2['#person'] = 'Kevin Freeman';
+    $items[] = $single_person_card_2;
+
+    $single_person_card_3 = $single_person_card;
+    $single_person_card_3['#person'] = 'Martin Hart';
+    $items[] = $single_person_card_3;
+
+    $single_person_card_4 = $single_person_card;
+    $single_person_card_4['#person'] = 'Steve Harper';
+    $items[] = $single_person_card_4;
+
+    $single_person_card_5 = $single_person_card;
+    $single_person_card_5['#person'] = 'Alan Holland';
+    $items[] = $single_person_card_5;
+
+    $single_person_card_6 = $single_person_card;
+    $single_person_card_6['#person'] = 'Tom Robbinson';
+    $items[] = $single_person_card_6;
+
+    $single_person_card_7 = $single_person_card;
+    $single_person_card_7['#person'] = 'Kate Murry';
+    $items[] = $single_person_card_7;
+
+    $single_person_card_8 = $single_person_card;
+    $single_person_card_8['#person'] = 'Nick Cooper';
+    $items[] = $single_person_card_8;
+
+    $single_person_card_9 = $single_person_card;
+    $single_person_card_9['#person'] = 'Sheldon Oberon';
+    $items[] = $single_person_card_9;
+
+    $single_person_card_10 = $single_person_card;
+    $single_person_card_10['#person'] = 'Mark Grant';
+    $items[] = $single_person_card_10;
+
+    $element = [
+      '#theme' => 'server_theme_person_cards',
+      '#items' => $items,
+    ];
+    $build[] = $this->wrapElementWideContainer($element, 'Person Cards');
+
     return $build;
   }
 
